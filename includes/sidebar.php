@@ -47,7 +47,7 @@
               <li class="nav-item">
                 <a href="index.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -237,9 +237,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="../users/add.users.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
+                  <p>Add Users</p>
                 </a>
               </li>
               <li class="nav-item">
