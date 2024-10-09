@@ -1,13 +1,15 @@
 <?php
 ob_start();
 session_start(); 
-require '../../../includes/conn.php'; 
+require '../../../includes/conn.php';
+
 
 if (isset($_POST['signin'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $select_data = mysqli_query($conn, "SELECT * FROM tbl_users WHERE username = '$username'");
+    $select_data = mysqli_query($conn, "SELECT *, CONCAT(tbl_users.lastname, ', ', tbl_users.firstname) AS fullname FROM tbl_users
+    LEFT JOIN tbl_roles ON tbl_users.role_id = tbl_roles.role_id WHERE username = '$username'");
     $check = mysqli_num_rows($select_data);
 
     if ($check == 1) {
@@ -17,7 +19,9 @@ if (isset($_POST['signin'])) {
             $_SESSION['username'] = $username;
             $_SESSION['fullname'] = $row['fullname'];
             $_SESSION['email'] = $row['email'];
-            $_SESSION['user_role'] = $row['role']; 
+            $_SESSION['user_role'] = $row['role'];
+
+            
             header("location: ../../dashboard/index.php");
         } else {
             $_SESSION['error'] = 'wrong_password';

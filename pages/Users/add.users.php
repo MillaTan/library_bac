@@ -51,7 +51,7 @@ require '../../includes/conn.php';
 
                 <!-- Default box -->
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">User Info</h3>

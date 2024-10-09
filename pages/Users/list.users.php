@@ -1,6 +1,6 @@
 <?php
 require '../../includes/conn.php';
-// require '../../includes/session.php';
+require '../../includes/session.php';
 ?>
 
 <!DOCTYPE html>
@@ -64,11 +64,12 @@ require '../../includes/conn.php';
             </div>
           </form>
         </div>
-        
+
         <div class="card-body ">
           <table id="example1" class="table table-bordered">
             <thead>
               <tr>
+                <th>Profile</th>
                 <th>Fullname</th>
                 <th>Role</th>
                 <th>Campus</th>
@@ -93,6 +94,14 @@ require '../../includes/conn.php';
                 while ($row = mysqli_fetch_array($info)) {
                   ?>
                   <tr>
+                    <td>
+                      <?php
+                      if (!empty(base64_encode($row['profile']))) {
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['profile']) . '" class="img zoom " alt="User image" style="height: 80px; width: 100px">';
+                      } else {
+                        echo ' <img src="../../docs/assets/img/user.png" class="img zoom" alt="User image"  style="height: 80px; width: 100px">';
+                      } ?>
+                    </td>
                     <td><?php echo $row['fullname']; ?></td>
                     <td><?php echo $row['role']; ?></td>
                     <td><?php echo $row['campus']; ?></td>

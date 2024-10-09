@@ -1,6 +1,6 @@
 <?php
   require '../../includes/conn.php';
-    // require '../../includes/session.php';
+    require '../../includes/session.php';
 ?>
 
 <!DOCTYPE html>

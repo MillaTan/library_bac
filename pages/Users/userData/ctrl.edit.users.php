@@ -1,17 +1,17 @@
 <?php
 require '../../../includes/conn.php';
-// require '../../../includes/session.php';
+require '../../../includes/session.php';
 
 $user_id = $_GET['user_id'];
 
 if (isset($_POST['upload'])){
 
-    if (empty($_FILES['img']['tmp_name'])) {
-        $_SESSION['img'] = true;
-        header('location: ../edit.user.php?user_id=' . $user_id);
+    if (empty($_FILES['profile']['tmp_name'])) {
+        header('location: ../edit.users.php?user_id=' . $user_id);
     } else {
-        $img = addslashes(file_get_contents($_FILES['img']['tmp_name']));
-        $insert_data = mysqli_query($conn, "UPDATE tbl_users SET img = '$img' WHERE user_id = '$user_id'");
+        $profile = addslashes(file_get_contents($_FILES['profile']['tmp_name']));
+        $_SESSION['profile'] = true;
+        $insert_data = mysqli_query($conn, "UPDATE tbl_users SET profile = '$profile' WHERE user_id = '$user_id'");
         header("location: ../edit.users.php?user_id=". $user_id);
     }
 
@@ -41,7 +41,7 @@ if (isset($_POST['upload'])){
         lastname = '$lastname', role_id = '$role', campus_id = '$campus', gender_id = '$gender', civil_id = '$civilstat', birthdate = '$birthdate', address = '$address', email = '$email', contact = '$contact',
         username = '$username', password = '$hashed_pass' WHERE user_id = '$user_id'");
         $_SESSION['updated'] = true;
-        header("location: ../../email/email.php?user_id=". $user_id);
+        header("location: ../edit.users.php?user_id=". $user_id);
 
     } else {
         echo 1;

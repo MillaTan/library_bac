@@ -1,6 +1,6 @@
 <?php
 require '../../includes/conn.php';
-require '../../includes/session.php';
+// require '../../includes/session.php';
 
 if(isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
@@ -61,6 +61,51 @@ if(isset($_GET['user_id'])) {
                                 <h3 class="card-title">User Info</h3>
                             </div>
                             <div class="card-body">
+                            <form action="userData/ctrl.edit.users.php?user_id=<?php echo $user_id; ?>" method="POST"
+                                enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <?php
+                                    $info = mysqli_query($conn, "SELECT * FROM tbl_users WHERE user_id = '$user_id'");
+                                    while ($row = mysqli_fetch_array($info)) {
+                                        ?>
+                                        <div class="row justify-content-center">
+                                            <div class="form-group">
+                                                <div class="text-center">
+                                                    <?php
+                                                    if (!empty($row['profile'])) {
+                                                        ?>
+                                                        <img class="img-fluid img-bordered img-circle p-1"
+                                                            src="data:image/jpeg;base64, <?php echo base64_encode($row['profile']); ?> "
+                                                            alt="User profile picture"
+                                                            style="width: 145px; height: 145px; margin-bottom: 10px;">
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img style="width: 130px; height: 130px;"
+                                                            src="../../docs/assets/img/user.png" alt="User Avatar"
+                                                            class="img-size-50 img-circle mr-3">
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <label for="exampleInputFile">Profile</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input required type="file" class="custom-file-input" name="profile"
+                                                            id="exampleInputFile">
+                                                        <label class="custom-file-label" for="exampleInputFile">Choose
+                                                            file</label>
+                                                    </div>
+                                                    <button type="submit" name="upload" class="btn btn-primary">
+                                                        <span>Upload</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                            </form>
                                 <form action="userData/ctrl.edit.users.php?user_id=<?php echo $user_id; ?>"
                                     method="POST" enctype="multipart/form-data">
                                     <?php
