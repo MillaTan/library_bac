@@ -1,3 +1,8 @@
+<?php
+  require '../../includes/conn.php';
+    // require '../../includes/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,7 @@
   <title>AdminLTE 3 | Dashboard</title>
 
   <?php require '../../includes/link.php';?>
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -15,13 +21,15 @@
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
-
+  <!-- Navbar -->
+   <?php require '../../includes/navbar.php';?>
+  
+ 
 
   <!-- Main Sidebar Container -->
+  <?php require '../../includes/sidebar.php';?>
+   
 
-  <?php require '../../includes/sidebar.php'; ?>
-  <?php require '../../includes/navbar.php'; ?>
-  
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -29,9 +37,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Super Admin</h1>
+            <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
-          
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -46,14 +59,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>000</h3>
+                <h3>150</h3>
 
-                <p>Student</p>
+                <p>Total Users</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="../../pages/Dashboard/list.users.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,9 +74,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>---<sup style="font-size: 20px"></sup></h3>
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Librarian</p>
+                <p>Bounce Rate</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -76,14 +89,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>---</h3>
+                <h3>44</h3>
 
-                <p>Admin</p>
+                <p>User Registrations</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="../../register/list.register.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -103,16 +116,24 @@
           </div>
           <!-- ./col -->
         </div>
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <?php require '../../includes/footer.php'; ?>
+  <!-- /.content-wrapper -->
 
+  <!-- MAIN FOOTER -->
+<?php require '../../includes/footer.php'?>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
-<?php require '../../includes/script.php'; ?>
-
+<?php require '../../includes/script.php'?>
 </body>
 </html>
