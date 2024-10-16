@@ -1,6 +1,6 @@
 <?php
 require '../../includes/conn.php';
-// require '../../includes/session.php';
+require '../../includes/session.php';
 
 if(isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];

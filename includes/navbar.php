@@ -16,7 +16,7 @@
       <a class="nav-link" data-toggle="dropdown" href="#">
         <?php
         $info = mysqli_query($conn, "SELECT * FROM tbl_users WHERE user_id = '$_SESSION[user_id]'");
-        $row = mysqli_fetch_array($info); 
+        $row = mysqli_fetch_array($info);
         if (!empty($row['profile'])) {
           ?>
           <img style="width: 30px; height: 30px;"
@@ -30,20 +30,36 @@
           <?php
         }
         ?>
-        <span class="badge badge-danger navbar-badge">3</span>
+        <span class="badge badge-danger navbar-badge"></span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <a href="#" class="dropdown-item">
           <!-- Message Start -->
           <div class="media">
-            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+            <?php
+
+            if (!empty($row['profile'])) {
+              ?>
+              <img style="width: 50px; height: 50px;"
+                src="../../data:image/jpeg;base64,<?php echo base64_encode($row['profile']) ?>" alt="User Avatar"
+                class="img-size-50 img-circle mr-3">
+              <?php
+            } else {
+              ?>
+              <img style="width: 50px; height: 50px;" src="../../docs/assets/img/user.png" alt="User Avatar"
+                class="img-size-50 img-circle mr-3">
+              <?php
+            }
+            ?>
             <div class="media-body">
               <h3 class="dropdown-item-title">
-                Brad Diesel
-                <span class="float-right text-sm text-danger"><i></i></span>
+                <b>
+                  <?php echo $_SESSION['fullname']; ?>
+                </b>
+                <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
               </h3>
-              <p class="text-sm">Call me whenever you can...</p>
-              <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              <p class="text-sm"><?php echo $row['email'] ?></p>
+              <p class="text-sm text-muted"><i class="far fa-user mr-1"></i><?php echo $row['username'] ?></p>
             </div>
           </div>
           <!-- Message End -->
